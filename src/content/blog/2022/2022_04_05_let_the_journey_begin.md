@@ -1,7 +1,7 @@
 ---
 title: "Rust: Let the Journey Begin"
 publishedDate: "2022-04-05"
-categories: ["rust"]
+categories: ["languages"]
 tags: ["introduction"]
 ---
 
