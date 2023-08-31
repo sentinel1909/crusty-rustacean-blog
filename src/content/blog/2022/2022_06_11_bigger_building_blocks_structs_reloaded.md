@@ -1,8 +1,8 @@
 ---
 title: "Rust: Bigger Building Blocks - Structs Reloaded"
 publishedDate: "2022-06-11"
-categories: ["programming languages"]
-tags: ["rust, structs"]
+categories: ["languages"]
+tags: ["structs"]
 ---
 
 In a previous article, I introduced you to structs in Rust. Structs are flexible data structures that allow the grouping of fields together under one roof. Structs have a lot of capability. Let’s take a look at the things I didn’t cover last time out.

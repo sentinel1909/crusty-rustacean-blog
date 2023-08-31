@@ -3,7 +3,7 @@
 title: "How-to: Simple Website Hosting with Shuttle"
 publishedDate: "2023-06-05"
 categories: ["deployment"]
-tags: ["rust, axum, static files"]
+tags: ["shuttle"]
 ---+
 
 ## Simple Website Hosting

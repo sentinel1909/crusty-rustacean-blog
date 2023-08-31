@@ -2,7 +2,7 @@
 title: "Beginning the Rust Learning Journal"
 publishedDate: "2023-06-17"
 categories: ["journal"]
-tags: ["week 0"]
+tags: ["goals"]
 ---
 
 ## Purpose

@@ -1,8 +1,8 @@
 ---
-title: "Pouring the Footings - Compound Data Types"
+title: "Rust: Pouring the Footings - Compound Data Types"
 publishedDate: "2022-04-18"
-categories: ["programming languages, rust"]
-tags: ["data types, compound"]
+categories: ["languages"]
+tags: ["types"]
 ---
 
 _Revised: 2023-08-30_

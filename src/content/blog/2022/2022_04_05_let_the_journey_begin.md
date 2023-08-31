@@ -1,8 +1,8 @@
 ---
-title: "Let the Journey Begin"
+title: "Rust: Let the Journey Begin"
 publishedDate: "2022-04-05"
-categories: ["programming languages, rust"]
-tags: ["getting started"]
+categories: ["rust"]
+tags: ["introduction"]
 ---
 
 _Revised: 2023-08-30_

@@ -1,8 +1,8 @@
 ---
-title: "Pouring the Footings"
+title: "Rust: Pouring the Footings"
 publishedDate: "2022-04-12"
-categories: ["programming languages, rust"]
-tags: ["comments, variables, mutability, shadowing"]
+categories: ["languages"]
+tags: ["basics"]
 ---
 
 _Revised: 2023-08-30_

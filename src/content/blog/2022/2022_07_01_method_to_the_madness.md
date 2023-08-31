@@ -1,8 +1,8 @@
 ---
 title: "Rust: Method to the Madness"
 publishedDate: "2022-07-01"
-categories: ["programming languages"]
-tags: ["rust, method syntax"]
+categories: ["languages"]
+tags: ["methods"]
 ---
 
 ### The Method Syntax

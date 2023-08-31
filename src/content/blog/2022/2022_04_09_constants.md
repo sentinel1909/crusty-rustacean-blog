@@ -1,7 +1,7 @@
 ---
-title: "Constants..or how to say no to magic values"
+title: "Rust: Constants..or how to say no to magic values"
 publishedDate: "2022-04-09"
-categories: ["programming languages, rust"]
+categories: ["languages"]
 tags: ["constants"]
 ---
 

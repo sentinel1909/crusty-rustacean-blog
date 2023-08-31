@@ -1,8 +1,8 @@
 ---
 title: "Rust: Let's Get Functional"
 publishedDate: "2022-04-22"
-categories: ["programming languages"]
-tags: ["rust, functions"]
+categories: ["languages"]
+tags: ["functions"]
 ---
 
 In my last Rusty writings, I covered Rust’s compound data types. Today I will write to you about functions. Functions are essential tool to help make code more organized and maintainable.

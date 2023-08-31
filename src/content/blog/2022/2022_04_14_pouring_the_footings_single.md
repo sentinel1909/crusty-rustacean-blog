@@ -1,8 +1,8 @@
 ---
-title: "Pouring the Footings - Single Value Data Types"
+title: "Rust: Pouring the Footings - Single Value Data Types"
 publishedDate: "2022-04-14"
-categories: ["programming languages, rust"]
-tags: ["data types, single value"]
+categories: ["languages"]
+tags: ["types"]
 ---
 
 _Revised: 2023-08-30_

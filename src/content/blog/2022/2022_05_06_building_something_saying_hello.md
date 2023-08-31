@@ -1,8 +1,8 @@
 ---
 title: "Rust: Building Something - Saying Hello"
 publishedDate: "2022-05-06"
-categories: ["programming languages"]
-tags: ["rust, examples, user input"]
+categories: ["languages"]
+tags: ["examples"]
 ---
 
 I’ve covered what I consider the core concepts of the Rust language, namely:

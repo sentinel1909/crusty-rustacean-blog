@@ -1,8 +1,8 @@
 ---
 title: "Rust: Decisions, Decisions"
 publishedDate: "2022-04-27"
-categories: ["programming languages"]
-tags: ["rust, flow control"]
+categories: ["languages"]
+tags: ["flow"]
 ---
 
 Software capability would be very limited if there were no ability to make decisions and follow different logic paths. The ability to branch and provide different outcomes, based on either internal results or external user input, is essential. Rust provides basic decision logic in the form of the if and else if expressions.

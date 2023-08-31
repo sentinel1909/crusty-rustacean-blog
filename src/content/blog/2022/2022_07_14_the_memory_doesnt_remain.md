@@ -1,8 +1,8 @@
 ---
 title: "Rust: The Memory Doesn't Remain"
 publishedDate: "2022-07-14"
-categories: ["programming languages"]
-tags: ["rust, memory, ownership, borrowing"]
+categories: ["languages"]
+tags: ["memory"]
 ---
 
 This is the article I’ve been needing to write for about a month (maybe two) but have fretted and procrastinated.

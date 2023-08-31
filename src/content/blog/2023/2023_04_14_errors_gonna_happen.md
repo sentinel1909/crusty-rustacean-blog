@@ -1,8 +1,8 @@
 ---
 title: "Rust: Errors Gonna Happen"
 publishedDate: "2023-04-14"
-categories: ["programming languages"]
-tags: ["rust, result"]
+categories: ["languages"]
+tags: ["result"]
 ---
 
 The Result enumeration in Rust is the second special enumeration available in the standard library. It is a powerful tool for error handling and enables you to handle errors in an elegant, recoverable fashion. Using the Result enum is a bit of a shift in thinking from other languages.

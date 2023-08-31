@@ -1,8 +1,8 @@
 ---
 title: "Rust: Bigger Building Blocks - Intro to Structs"
 publishedDate: "2022-05-11"
-categories: ["programming languages"]
-tags: ["rust, structs"]
+categories: ["languages"]
+tags: ["structs"]
 ---
 
 I’m roughly following the order of The Rust Book in my writings, but I intend on deviating a little. The next topic is ownership and borrowing, but I don’t feel like I’m quite able to write about those two things coherently yet. Instead, I will write about the first of Rust’s bigger building blocks — structs.

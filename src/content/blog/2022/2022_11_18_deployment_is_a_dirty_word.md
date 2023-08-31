@@ -2,7 +2,7 @@
 title: "Deployment is a Dirty Word"
 publishedDate: "2022-11-18"
 categories: ["deployment"]
-tags: ["windows, windows server"]
+tags: ["windows"]
 ---
 
 I’m a Principal in the Engineering firm I work for. In addition to my day job, I’ve been the IT manager for the company for over a dozen years. I act as a specialist in the software and systems we need to conduct our business. I have an IT company which supports me in the day-to-day grind, but I maintain the skills to step in and take care of things if needed. I’ve been around computers all my life and I love information technology, so having this outlet is something I’ve truly been thankful for.

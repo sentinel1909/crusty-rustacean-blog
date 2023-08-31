@@ -1,8 +1,8 @@
 ---
 title: "Rust: Controlling the Flow"
 publishedDate: "2022-05-01"
-categories: ["programming languages"]
-tags: ["rust, flow control"]
+categories: ["languages"]
+tags: ["flow"]
 ---
 
 Last time, in Rust: Decisions, Decisions, we looked at a method for adding logic within a program, via the if and if else expressions. Next up, we see how we can further control the flow, through loops. Loops allow repetition of blocks of code until some desired event or outcome. There are three kinds of loops in Rust: loop, while, and for.

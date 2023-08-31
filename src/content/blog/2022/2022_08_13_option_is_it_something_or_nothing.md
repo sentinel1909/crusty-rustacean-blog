@@ -1,8 +1,8 @@
 ---
 title: "Rust: Option - is it Something...or...Nothing?"
 publishedDate: "2022-08-13"
-categories: ["programming languages"]
-tags: ["rust, option"]
+categories: ["languages"]
+tags: ["option"]
 ---
 
 I apologize, dear readers, for my lack of consistency in posting here on Medium. Writing and generating content is a challenge for me. If I can provide you with a nugget of perspective once a month, that’s what I’m going to aim for. As the saying goes, practice makes perfect, so eventually, you might see more from me. I thank all of you for your interest in reading my thoughts on the Rust language.

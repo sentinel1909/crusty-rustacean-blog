@@ -1,8 +1,8 @@
 ---
 title: "Rust: The Dumbest Program Ever"
 publishedDate: "2022-11-14"
-categories: ["programming languages"]
-tags: ["examples, hashmaps"]
+categories: ["languages"]
+tags: ["examples"]
 ---
 
 I have been learning Rust off and on for the past two years. My confidence in the language has steadily increased in the past two or three months. In September, I wrote what I now lovingly refer to as "the dumbest Rust program ever".

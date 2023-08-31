@@ -1,8 +1,8 @@
 ---
 title: "Rust: Matchy Matchy"
 publishedDate: "2022-09-30"
-categories: ["programming languages"]
-tags: ["rust, match syntax"]
+categories: ["languages"]
+tags: ["match"]
 ---
 
 My journey in learning the Rust language continues. Today, let’s explore one of Rust’s unique methods of controlling program flow, known as the match construct.

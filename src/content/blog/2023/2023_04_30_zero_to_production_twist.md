@@ -2,7 +2,7 @@
 title: "Zero to Production in Rust...with a Twist"
 publishedDate: "2023-04-30"
 categories: ["projects"]
-tags: ["rust, frameworks, axum"]
+tags: ["API"]
 ---
 
 I've been learning Rust very seriously for about the last year. I sometimes still dabble with JavaScript, but increasingly I've decided Rust is where it's at. I would very much like to be a full stack developer in this language.

@@ -1,8 +1,8 @@
 ---
 title: "Rust: Bigger Building Blocks - Intro to Enumerations"
 publishedDate: "2022-05-21"
-categories: ["programming languages"]
-tags: ["rust, enums"]
+categories: ["languages"]
+tags: ["enums"]
 ---
 
 Today I will cover the very basics of Rust’s enum type. Enums are a pillar of the language.

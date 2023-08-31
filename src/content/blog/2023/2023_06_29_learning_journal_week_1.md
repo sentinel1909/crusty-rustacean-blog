@@ -2,7 +2,7 @@
 title: "Rust Learning Journal Week 1"
 publishedDate: "2023-06-29"
 categories: ["journal"]
-tags: ["week 1"]
+tags: ["generics"]
 ---
 
 Over a week ago, I started a "Rust Learning Journal" inspired by the [How to Learn Rust](https://learning.accelerant.dev/how-to-learn-rust) course by Tim McNamara. Unfortunately, my attention for Tim's course hasn't been the greatest, as I found myself diving back into Zero to Production in Rust. That project will be complete soon, so I'll eventually circle back to Tim's content.
