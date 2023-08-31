@@ -1,0 +1,20 @@
+---
+// index page frontmatter
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
+const blogEntries = await getCollection("blog");
+---
+
+<SiteLayout>
+  <section>
+    <ul>
+      {
+        blogEntries.map((blogPostEntry) => (
+          <li>
+            <a href={`/posts/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</SiteLayout>

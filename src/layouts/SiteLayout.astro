@@ -1,0 +1,26 @@
+---
+// Site Layout frontmatter
+import Header from "../components/Header.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Crusty Rustacean - The Blog";
+const year: string = new Date().getFullYear().toString();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  </head>
+</html>
+<body class="container mx-auto font-mono bg-slate-950 text-white">
+  <Header />
+  <NavBar />
+  <main>
+    <slot />
+  </main>
+  <Footer year={year} />
+</body>

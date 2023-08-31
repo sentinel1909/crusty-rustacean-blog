@@ -1,0 +1,20 @@
+---
+// tags index page frontmatter
+import { getCollection } from 'astro:content';
+import SiteLayout from "../../layouts/SiteLayout.astro";
+const allBlogPosts = await getCollection('blog');
+const tags = [...new Set(allBlogPosts.map((blogpost) => blogpost.data.tags).flat())];
+const pageTitle = "Tag Index";
+---
+
+<SiteLayout pageTitle={pageTitle}>
+  <section>
+    {
+      tags.map((tag) => (
+        <p>
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </section>
+</SiteLayout>

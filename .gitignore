@@ -1,0 +1,10 @@
+# gitignore file for the Crusty Rustacean Blog repo
+
+.astro
+
+node_modules
+
+server/dist
+
+server/target
+

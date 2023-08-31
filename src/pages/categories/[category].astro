@@ -1,0 +1,32 @@
+---
+// categories page frontmatter
+import { getCollection } from "astro:content";
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const allBlogPosts = await getCollection("blog");
+  const uniqueCategories = [...new Set(allBlogPosts.map((blogpost) => blogpost.data.categories).flat())];
+
+  return uniqueCategories.map((category) => {
+    const filteredBlogPosts = allBlogPosts.filter((blogpost) =>
+      blogpost.data.categories.includes(category)
+    );
+    return {
+      params: { category },
+      props: { blogposts: filteredBlogPosts },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const { blogposts } = Astro.props;
+---
+
+<SiteLayout pageTitle={category}>
+  <h2 class="text-lg text-orange-600">Blog Posts tagged with: {category}</h2>
+  <br />
+  <ul>
+    { blogposts.map((blogpost) => <BlogPost url={'/posts/' + blogpost.slug} title={blogpost.data.title} />) }
+  </ul>
+</SiteLayout>

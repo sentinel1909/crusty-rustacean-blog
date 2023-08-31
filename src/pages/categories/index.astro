@@ -1,0 +1,20 @@
+---
+// categories index page frontmatter
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+const allBlogPosts = await getCollection('blog');
+const categories = [...new Set(allBlogPosts.map((blogpost) => blogpost.data.categories).flat())];
+const pageTitle = "Category Index";
+---
+
+<SiteLayout pageTitle={pageTitle}>
+  <section>
+    {
+      categories.map((category) => (
+        <p>
+          <a href={`/categories/${category}`}>{category}</a>
+        </p>
+      ))
+    }
+  </section>
+</SiteLayout>

@@ -1,0 +1,20 @@
+[package]
+name = "crusty-rustacean-blog"
+version = "2.0.0"
+edition = "2021"
+description = "Crusty Rustacean Development Blog"
+readme = "README.md"
+authors = [ "Jeffery D. Mitchell", "<sentinel1909@jeff-mitchell.dev>" ]
+repository = "https://github.com/sentinel1909/crusty-rustacean-blog"
+license = "MIT"
+keywords = ["zola, rocket, shuttle"]
+categories = ["static"]
+publish = false
+
+[dependencies]
+axum = "0.6.20"
+shuttle-axum = "0.25.0"
+shuttle-static-folder = { version = "0.25.0" }
+shuttle-runtime = { version = "0.25.0" }
+tokio = { version = "1.29.1" }
+tower-http = { version = "0.4.3", features = [ "fs" ] }

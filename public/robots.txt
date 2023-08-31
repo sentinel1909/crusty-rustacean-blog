@@ -1,0 +1,4 @@
+# Crusty Rustacean Blog robots.txt
+
+User-agent: *
+Allow: /

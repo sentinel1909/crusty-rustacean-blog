@@ -1,0 +1,26 @@
+---
+// footer component frontmatter
+const { year } = Astro.props;
+---
+
+<footer class="py-5 text-orange-600">
+  <p>
+    &copy; <span id="year">{year}</span><a
+      href="https://jeff-mitchell.dev"
+      target="_blank"
+    >
+      <a href="https://jeff-mitchell.dev" target=_"blank">Jeffery D. Mitchell</a> | All Rights Reserved
+  </p>
+  <p>
+    Site built with <a
+      class="text-pink-500 hover:font-bold"
+      href="https://astro.build"
+      target="_blank">Astro</a
+    > and hosted on <a
+      class="text-pink-500 hover:font-bold"
+      href="https://shuttle.rs"
+      target="_blank">Shuttle</a
+    >
+  </p>
+  <p>Find my blog helpful? Perhaps <a class="text-pink-500 hover:font-bold" href="https://buymeacoffee.com/sentinel1909" target="_blank">buy me a coffee</a></p>
+</footer>
