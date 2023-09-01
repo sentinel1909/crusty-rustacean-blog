@@ -14,7 +14,7 @@ export async function getStaticPaths() {
     );
     return {
       params: { category },
-      props: { blogposts: filteredBlogPosts },
+      props: { blogPosts: filteredBlogPosts },
     };
   });
 }
