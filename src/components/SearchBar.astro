@@ -1,0 +1,8 @@
+---
+import Search from './Search';
+import { getCollection } from "astro:content";
+const blogEntries = await getCollection("blog");
+const posts = blogEntries;
+---
+
+<Search client:load searchList={posts} />

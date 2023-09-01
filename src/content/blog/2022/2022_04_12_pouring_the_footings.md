@@ -1,6 +1,7 @@
 ---
 title: "Rust: Pouring the Footings"
 publishedDate: "2022-04-12"
+description: "An overview of basic foundational concepts, including comments, variables, mutability and shadowing"
 categories: ["languages"]
 tags: ["basics"]
 ---

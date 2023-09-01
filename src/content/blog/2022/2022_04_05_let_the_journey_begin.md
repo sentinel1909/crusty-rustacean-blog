@@ -1,6 +1,7 @@
 ---
 title: "Rust: Let the Journey Begin"
 publishedDate: "2022-04-05"
+description: "A soft introduction to the Rust programming language, build a Hello, World"
 categories: ["languages"]
 tags: ["introduction"]
 ---

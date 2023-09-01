@@ -2,6 +2,7 @@
 // Site Layout frontmatter
 import Header from "../components/Header.astro";
 import NavBar from "../components/NavBar.astro";
+import SearchBar from '../components/SearchBar.astro';
 import Footer from "../components/Footer.astro";
 
 const pageTitle = "Crusty Rustacean - The Blog";
@@ -19,6 +20,7 @@ const year: string = new Date().getFullYear().toString();
 </html>
 <body class="container mx-auto font-mono bg-slate-800 text-white">
   <Header />
+  <SearchBar />
   <NavBar />
   <main>
     <slot />

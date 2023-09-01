@@ -1,6 +1,7 @@
 ---
 title: "Deployment is a Dirty Word...Reloaded"
 publishedDate: "2023-05-10"
+description: "An article with further thoughts on deployment of Rust software"
 categories: ["deployment"]
 tags: ["shuttle"]
 ---

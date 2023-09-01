@@ -1,6 +1,7 @@
 ---
 title: "Rust: The Dumbest Program Ever"
 publishedDate: "2022-11-14"
+description: "A breakthrough example program in my journey to learn Rust"
 categories: ["languages"]
 tags: ["examples"]
 ---

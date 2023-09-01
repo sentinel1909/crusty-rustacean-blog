@@ -1,6 +1,7 @@
 ---
 title: "Rust: Pouring the Footings - Compound Data Types"
 publishedDate: "2022-04-18"
+description: "An introduction to compound data types"
 categories: ["languages"]
 tags: ["types"]
 ---

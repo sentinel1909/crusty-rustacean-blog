@@ -11,8 +11,10 @@ const blogEntries = await getCollection("blog");
       {
         blogEntries.reverse().map((blogPostEntry) => (
           <li>
-            <a href={`/posts/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+            <a class="text-pink-500 hover:font-bold" href={`/posts/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+            <p>{blogPostEntry.data.description}</p>
           </li>
+          <br />
         ))
       }
     </ul>

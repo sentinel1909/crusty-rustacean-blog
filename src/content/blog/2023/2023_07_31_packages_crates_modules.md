@@ -1,8 +1,9 @@
 ---
-title: "Issue 1: Organizing a Rust Program with Modules, Crates, and Packages"
+title: "Newsletter Issue 1: Organizing a Rust Program with Modules, Crates, and Packages"
 publishedDate: "2023-07-31"
+description: "An overview of how to structure a Rust program with crates, packages, and modules"
 categories: ["newsletter"]
-tags: ["issue"]
+tags: ["issue 1"]
 ---
 
 Today, I will give you my take on crates, packages and modules. I've found the organization system for Rust programs to be difficult to master. However, time and practice are solidifying things for me.

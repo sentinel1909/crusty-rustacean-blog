@@ -1,6 +1,7 @@
 ---
 title: "Rust: Controlling the Flow"
 publishedDate: "2022-05-01"
+description: "An introduction to the flow control tools and syntax"
 categories: ["languages"]
 tags: ["flow"]
 ---

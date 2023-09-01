@@ -1,6 +1,7 @@
 ---
 title: "Rust: Let's Get Functional"
 publishedDate: "2022-04-22"
+description: "An introduction to functions and their associated syntax"
 categories: ["languages"]
 tags: ["functions"]
 ---

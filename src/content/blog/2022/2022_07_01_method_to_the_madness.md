@@ -1,6 +1,7 @@
 ---
 title: "Rust: Method to the Madness"
 publishedDate: "2022-07-01"
+description: "An introduction to the method syntax"
 categories: ["languages"]
 tags: ["methods"]
 ---

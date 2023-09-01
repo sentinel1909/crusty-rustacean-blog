@@ -1,6 +1,7 @@
 ---
 title: "Zero to Production in Rust...with a Twist"
 publishedDate: "2023-04-30"
+description: "A progress update on my first offical Rust project"
 categories: ["projects"]
 tags: ["API"]
 ---

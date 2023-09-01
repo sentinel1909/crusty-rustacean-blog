@@ -1,6 +1,7 @@
 ---
 title: "Beginning the Rust Learning Journal"
 publishedDate: "2023-06-17"
+description: "The starting article of my Rust learning journal series"
 categories: ["journal"]
 tags: ["goals"]
 ---

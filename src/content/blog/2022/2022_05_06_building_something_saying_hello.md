@@ -1,6 +1,7 @@
 ---
 title: "Rust: Building Something - Saying Hello"
 publishedDate: "2022-05-06"
+description: "A simple example program which demonstrates user input and output"
 categories: ["languages"]
 tags: ["examples"]
 ---

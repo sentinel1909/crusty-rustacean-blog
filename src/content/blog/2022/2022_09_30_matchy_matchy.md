@@ -1,6 +1,7 @@
 ---
 title: "Rust: Matchy Matchy"
 publishedDate: "2022-09-30"
+description: "An introduction to match syntax for flow control"
 categories: ["languages"]
 tags: ["match"]
 ---
@@ -11,7 +12,7 @@ Previously, I’ve explored the traditional ways of controlling program flow, na
 
 Let’s dive in and explore through a fun, silly little Star Wars themed example.
 
-```
+```rust
 enum Classification {
     Starfighter,
     Freighter,
@@ -55,7 +56,7 @@ Individual arms within each part of the match can contain multiple Rust statemen
 
 Match evaluations must be exhaustive. We have to evaluate every possible outcome otherwise a compiler error will occur. What happens if we care about one or two patterns and nothing else? The catch-all pattern, \_ , is available. Let’s look at another example:
 
-```
+```rust
 extern crate rand;
 use rand::Rng;
 fn main() {

@@ -1,6 +1,7 @@
 ---
 title: "Deployment is a Dirty Word"
 publishedDate: "2022-11-18"
+description: "General concepts and thoughts for deploying Rust programs in a Microsoft Windows environment"
 categories: ["deployment"]
 tags: ["windows"]
 ---

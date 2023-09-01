@@ -1,6 +1,7 @@
 ---
 title: "Rust: Bigger Building Blocks - Intro to Structs"
 publishedDate: "2022-05-11"
+description: "An introduction to the struct data type"
 categories: ["languages"]
 tags: ["structs"]
 ---

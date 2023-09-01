@@ -1,6 +1,7 @@
 ---
 title: "Rust: Errors Gonna Happen"
 publishedDate: "2023-04-14"
+description: "A brief introduction to the result type"
 categories: ["languages"]
 tags: ["result"]
 ---

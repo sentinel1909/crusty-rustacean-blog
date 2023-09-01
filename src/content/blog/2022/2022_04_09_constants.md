@@ -1,6 +1,7 @@
 ---
 title: "Rust: Constants..or how to say no to magic values"
 publishedDate: "2022-04-09"
+description: "An introduction to the concept of constant values"
 categories: ["languages"]
 tags: ["constants"]
 ---

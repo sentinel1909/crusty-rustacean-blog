@@ -1,6 +1,7 @@
 ---
 title: "Rust: Bigger Building Blocks - Intro to Enumerations"
 publishedDate: "2022-05-21"
+description: "An introduction to the enum data type"
 categories: ["languages"]
 tags: ["enums"]
 ---

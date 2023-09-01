@@ -1,6 +1,7 @@
 ---
 title: "Rust Learning Journal Week 1"
 publishedDate: "2023-06-29"
+description: "An article in the Rust learning journal series"
 categories: ["journal"]
 tags: ["generics"]
 ---

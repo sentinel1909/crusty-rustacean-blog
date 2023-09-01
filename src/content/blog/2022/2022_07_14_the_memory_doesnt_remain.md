@@ -1,6 +1,7 @@
 ---
 title: "Rust: The Memory Doesn't Remain"
 publishedDate: "2022-07-14"
+description: "A basic overview of how memory is handled in Rust, including the concepts of ownership and borrowing"
 categories: ["languages"]
 tags: ["memory"]
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Rust: Option - is it Something...or...Nothing?"
 publishedDate: "2022-08-13"
+description: "An introduction to the option type"
 categories: ["languages"]
 tags: ["option"]
 ---

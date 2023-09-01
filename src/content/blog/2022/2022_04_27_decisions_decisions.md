@@ -1,6 +1,7 @@
 ---
 title: "Rust: Decisions, Decisions"
 publishedDate: "2022-04-27"
+description: "An introduction to the decision making logic tools and syntax"
 categories: ["languages"]
 tags: ["flow"]
 ---

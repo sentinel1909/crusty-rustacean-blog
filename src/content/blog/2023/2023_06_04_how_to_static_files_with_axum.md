@@ -2,6 +2,7 @@
 
 title: "How-to: Simple Website Hosting with Shuttle"
 publishedDate: "2023-06-05"
+description: "A brief article on how to host static web site files on Shuttle"
 categories: ["deployment"]
 tags: ["shuttle"]
 ---+

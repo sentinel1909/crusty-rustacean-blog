@@ -1,6 +1,7 @@
 ---
 title: "Rust: Pouring the Footings - Single Value Data Types"
 publishedDate: "2022-04-14"
+description: "A introduction to single value data types"
 categories: ["languages"]
 tags: ["types"]
 ---

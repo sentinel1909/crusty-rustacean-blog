@@ -1,6 +1,7 @@
 ---
 title: "Rust: Bigger Building Blocks - Structs Reloaded"
 publishedDate: "2022-06-11"
+description: "A continuation of the discussion on structs, some more advanced concepts"
 categories: ["languages"]
 tags: ["structs"]
 ---
