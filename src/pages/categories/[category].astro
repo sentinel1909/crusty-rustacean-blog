@@ -24,9 +24,11 @@ const { blogPosts } = Astro.props;
 ---
 
 <SiteLayout pageTitle={category}>
-  <h2 class="text-lg text-orange-600">Blog Posts tagged with: {category}</h2>
-  <br />
-  <ul>
-    { blogPosts.map((blogPost) => <BlogPost url={'/posts/' + blogPost.slug} title={blogPost.data.title} />) }
-  </ul>
+  <section>
+    <h2 class="text-lg text-orange-600">Blog Posts tagged with: {category}</h2>
+    <br />
+    <ul>
+      { blogPosts.map((blogPost) => <BlogPost url={'/posts/' + blogPost.slug} title={blogPost.data.title} />) }
+    </ul>
+  </section>
 </SiteLayout>
