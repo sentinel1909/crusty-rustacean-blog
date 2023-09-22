@@ -18,7 +18,7 @@ async fn health_check() -> impl IntoResponse {
 async fn main() -> shuttle_axum::ShuttleAxum {
     let router = Router::new()
         .route("/health_check", get(health_check))
-        .nest_service("/", ServeDir::new(PathBuf::from("dist")));
+        .nest_service("/", ServeDir::new(PathBuf::from("../dist")));
 
     Ok(router.into())
 }
