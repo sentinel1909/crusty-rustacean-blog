@@ -1,1 +1,5 @@
 name = "crusty-rustacean-blog"
+
+assets = [
+  "dist/*"
+]

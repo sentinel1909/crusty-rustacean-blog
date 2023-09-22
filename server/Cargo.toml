@@ -1,20 +1,19 @@
 [package]
 name = "crusty-rustacean-blog"
-version = "2.0.0"
+version = "2.1.0"
 edition = "2021"
 description = "Crusty Rustacean Development Blog"
 readme = "README.md"
 authors = [ "Jeffery D. Mitchell", "<sentinel1909@jeff-mitchell.dev>" ]
 repository = "https://github.com/sentinel1909/crusty-rustacean-blog"
 license = "MIT"
-keywords = ["zola, rocket, shuttle"]
+keywords = ["astro, axum, shuttle"]
 categories = ["static"]
 publish = false
 
 [dependencies]
 axum = "0.6.20"
-shuttle-axum = "0.26.0"
-shuttle-static-folder = { version = "0.26.0" }
-shuttle-runtime = { version = "0.26.0" }
+shuttle-axum = "0.27.0"
+shuttle-runtime = { version = "0.27.0" }
 tokio = { version = "1.32.0" }
 tower-http = { version = "0.4.4", features = [ "fs" ] }

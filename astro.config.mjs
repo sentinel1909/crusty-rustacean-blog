@@ -7,7 +7,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  outDir: "./server/dist",
+  outDir: "./dist",
   integrations: [tailwind(), react()],
   site: "https://blog.crusty-rustacean.dev",
 });

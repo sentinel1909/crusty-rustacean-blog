@@ -2,9 +2,9 @@
 
 .astro
 
-node_modules
+dist
 
-server/dist
+node_modules
 
 server/target
 
