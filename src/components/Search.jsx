@@ -28,7 +28,7 @@ function Search({ searchList }) {
 
   return (
     <>
-      <label>Search </label>
+      <label>Search: </label>
       <input
         type="text"
         value={query}

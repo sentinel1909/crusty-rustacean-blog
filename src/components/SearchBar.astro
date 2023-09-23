@@ -5,4 +5,6 @@ const blogEntries = await getCollection("blog");
 const posts = blogEntries;
 ---
 
-<Search client:load searchList={posts} />
+<div class="flex items-center justify-center">
+  <Search client:load searchList={posts} />
+</div>
