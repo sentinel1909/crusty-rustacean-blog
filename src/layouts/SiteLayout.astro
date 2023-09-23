@@ -1,4 +1,7 @@
 ---
+// dependencies
+import { SEO } from "astro-seo";
+
 // Site Layout frontmatter
 import Header from "../components/Header.astro";
 import NavBar from "../components/NavBar.astro";
@@ -12,6 +15,10 @@ const year: string = new Date().getFullYear().toString();
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <SEO 
+      title="The Crusty-Rustacean Blog"
+      description="A blog about the Rust language and it's ecosystem."
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
