@@ -1,6 +1,6 @@
 {
   "name": "crusty-rustacean-blog",
-  "version": "2023.10.11",
+  "version": "2023.10.15",
   "description": "",
   "main": "index.js",
   "scripts": {

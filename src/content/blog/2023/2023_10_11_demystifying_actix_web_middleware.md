@@ -6,6 +6,8 @@ categories: ["languages"]
 tags: ["middleware"]
 ---
 
+_Revised: 2023-10-15 The core maintainer of Actix Web kindly offered my some feedback on this article which I've incorporated._
+
 ## Introduction
 
 Earlier this year, I worked through [Zero to Production in Rust](https://www.zero2prod.com) by [Luca Palmieri](https://lpalmieri.com) using the Axum web framework. This a) forced me to learn that framework and b) force me to think when overcoming the differences.
@@ -30,71 +32,71 @@ The term "middleware" identifies a type of software that sits in the middle betw
 
 ## Why use Middleware?
 
-The main advantage of middleware is it reduces complexity. In the context of a server API, middleware can combine functionality into one thing, rather than each endpoint implementing its own version of that thing. The result is fewer places to introduce bugs. We'll see this in action further on in the example I've created.
+The main advantage of middleware is it reduces complexity. In the context of a server API, middleware can combine functionality into one block, rather than each endpoint implementing its own version of that functionality. The result is reduced complexity and fewer places to introduce bugs. We'll see this in action further on in the example I've created.
 
-Authentication is an area where middleware is often found. Authentication services can be implemented as middleware and "gatekeep" the rest of the application such that the middleware intercepts all incoming requests before passing properly authenticated users to the lands beyond.
+Authentication is an area where middleware is often used. Authentication services can be implemented as middleware and "gatekeep" the rest of the application such that the middleware intercepts all incoming requests before passing properly authenticated users to the lands beyond. Handling authentication via middleware saves each endpoint from having to do it. The middleware authenticates the user and either lets them pass on to the endpoint they wanted, or rejects the attempt.
 
 ## How to use Middleware in Actix Web
 
-`
-Middleware in Actix Web centers around implementing the Service and Transform traits. _Both_ these traits must be implemented on a type. The Transform trait initializes the middleware and acts like a factory. The factory builds the particular service defined by the Service trait. One difficulty I had is separating boiler plate code from the 'real' code that you write to implement functionality. Let's take a look at the bare minimum boiler plate to get off the ground.
+Middleware in Actix Web centers around implementing the Service and Transform traits. _Both_ these traits must be implemented on a type. The Transform trait initializes the middleware and acts like a factory. The factory builds the particular service defined by the Service trait. One difficulty I had is separating boiler plate code from the 'real' code that you write to implement functionality. Let's take a look at the bare minimum boiler plate to get off the ground. We'll make a simple middleware to process an API key.
 
 ```rust
-// dependencies, split into two groups, for clarity
+// dependencies
+use crate::domain::appstate::AppState;
 use actix_web::{
-	dev::{forward_ready, Service, ServiceRequest, ServiceResponse, Transform},
-	Error
+    body::EitherBody,
+    dev::{forward_ready, Service, ServiceRequest, ServiceResponse, Transform},
+    web::Data,
+    Error, HttpResponse,
 };
-use std::{
-	future::{ready, Future, Ready},
-	pin::Pin,
-};
+use futures_util::future::LocalBoxFuture;
+use std::future::{ready, Ready};
 
-// middleware centers around a type, let's make one. Our random struct does not need to contain any data
-struct RandomStruct;
+// struct to represent the API key
+#[derive(Debug, Clone)]
+pub struct ApiKey;
 
-// implement the transform trait for our RandomStruct
-impl<S, B> Transform<S, ServiceRequest> for RandomStruct
+// implement the transform trait for the ApiKey struct
+impl<S, B> Transform<S, ServiceRequest> for ApiKey
 where
-	S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error>,
-	S::Future: 'static,
-	B: 'static,
+    S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error>,
+    S::Future: 'static,
+    B: 'static,
 {
-	type response = ServiceResponse<B>;
-	type Error = Error;
-	type Transform = RandomStructMiddleware<S>;
-	type InitError = ();
-	type Future = Ready<Result<Self::Transform, Self::InitError>>;
-
-	// the core of the Transform trait is the new_transform function
-	fn new_transform(&self, service: S) -> Self::Future {
-		ready(Ok(RandomStructMiddleware { service }))
-	}
-}
-
-// we need another struct to model the actual middleware service that we're trying to implement
-struct RandomStructMiddleware<S> {
-	service: S,
-}
-
-// with the transform trait implementation setup, let's do the service trait for our RandomStructMiddlware
-impl<S, B> Service<ServiceRequest> for RandomStructMiddlware<S>
-where
-	S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error>,
-	S::Future: 'static,
-	B: 'static,
-{
-
-	type Response = ServiceResponse<B>;
+    type Response = ServiceResponse<EitherBody<B>>;
     type Error = Error;
-    type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>>>>;
+    type Transform = ApiKeyMiddleware<S>;
+    type InitError = ();
+    type Future = Ready<Result<Self::Transform, Self::InitError>>;
+
+    // create a new instance of the ApiKeyMiddleware struct
+    fn new_transform(&self, service: S) -> Self::Future {
+        ready(Ok(ApiKeyMiddleware { service }))
+    }
+}
+
+// struct to represent the ApiKeyMiddleware
+pub struct ApiKeyMiddleware<S> {
+    service: S,
+}
+
+// implement the service trait for the ApiKeyMiddleware struct
+impl<S, B> Service<ServiceRequest> for ApiKeyMiddleware<S>
+where
+    S: Service<ServiceRequest, Response = ServiceResponse<B>, Error = Error>,
+    S::Future: 'static,
+    B: 'static,
+{
+    type Response = ServiceResponse<EitherBody<B>>;
+    type Error = Error;
+    type Future = LocalBoxFuture<'static, Result<Self::Response, Self::Error>>;
 
     forward_ready!(service);
 
-	fn call(&self, req: ServiceRequest) -> Self::Future {
+    fn call(&self, req: ServiceRequest) -> Self::Future {
 
 		// bind a call to our service as the variable 'fut'
-		//  we have to box a future, so that its size is known at compile time.
+		// we have to box a future, so that its size is known at compile time.
 		// we also need to pin it in memory, because of the async operation
 		let fut = self.service.call(req);
 		Box::pin(async move {
@@ -105,9 +107,9 @@ where
 }
 ```
 
-Whew! I don't know about you but I'm kind of exhausted. That's a lot of code! The trait implementations give us a lot to think about and follow. This middleware will essentially do nothing. All the hard work above just sets it up so that you can wrap your endpoints with it. As it stands above, the boiler plate will pass on an incoming request to the endpoints and make no modification to it.
+Whew! I don't know about you but I'm kind of exhausted. That's a lot of code! The trait implementations give us a lot to think about and follow. This middleware will essentially do nothing. All the hard work above just sets it up so that you can wrap your endpoints with it. As it stands above, the boiler plate will pass an unmodified request straight on to the endpoint, whatever that may be.
 
-Ok, let's break all this down:
+Alright, let's break all this down:
 
 _Dependencies_
 
@@ -119,6 +121,7 @@ _Dependencies_
     - a service level request wrapper
   - ServiceResponse
     - a service level response wrapper
+    - in the Transform trait there is a type EitherBody. EitherBody is an enum with two variants, Left and Right. Each variant can contain a BoxBody type, which is a boxed message body with boxed errors
   - Transform
     - defines the interface of a service factory and is what builds our middleware service
 - we need the Error struct from actix_web
@@ -126,19 +129,20 @@ _Dependencies_
 - there are a few things from the standard library that are necessary, in order to enable working with futures
   - ready
     - a function which immediately returns a future with a value
-  - Future
-    - a trait which enables asynchronous computation obtained by use of async
   - Ready
     - a struct which represents our future and it's associated value, it's the output of the ready function
+- we'll also pull in LocalBoxFuture from the futures_util crate
+  - LocalBoxFuture is a "An owned dynamically typed Future for use in cases where you can’t statically type your result or need to add some indirection"
+  - it doesn't have the Send requirement, meaning it can't be transferred across thread boundaries
 
 _Structs_
 
 Middleware is always implemented for a type. We need two structs:
 
-- RandomStruct
+- ApiKey
   - acts a hook to trigger the middleware
-- RandomStructMiddleware
-  - the actual middleware service that is built, called, and run
+- ApiKeyMiddleware
+  - the actual middleware service that is built, called, and executed
 
 _Transform trait_
 
@@ -148,42 +152,38 @@ _Service trait_
 
 Similar to Transform, there are a lot of trait bounds and type definitions to wade through. Again, the core of the Service trait is the call function. This is where the meat goes. It takes a reference to self and an incoming request as parameters, and returns a future. The Future type definition constrains the call function to return a future or an error.
 
-Clear as mud? I thought so. Let's make the boiler plate somewhat useful.
+Clear as mud? I thought so. Let's make the boiler plate do something now.
 
-## An Example
+## Meat of the Matter
 
-I wrote a middleware which reads an API key from the header of an incoming request and checks that the key is valid. This example was created to run over on [Shuttle](https://shuttle.rs) and I won't get into the details of that, except to say the valid API key is stored in a secrets file which is read into and saved in the application state, using web::Data.
+This middleware will check the validity of an incoming API key. This example was created to run over on [Shuttle](https://shuttle.rs) and I won't get into the details of that, except to say the valid API key is stored in a secrets file which is read into and saved in the application state, using web::Data. This approach is overly simplistic and meant mainly for my learning purposes, so that there is something simple where I (and hopefully you) can visualize the flow. In real life you're not going to handle an API key in this fashion.
 
 ```rust
-// I'll just show the completed call function forming part of the Service trait
+// I'll just show the completed call function forming part of the Service trait we started earlier
 
-fn call(&self, req: ServiceRequest) -> Self::Future {
-        // get the x-api-key header from the request
-        let x_api_key = req
+  fn call(&self, request: ServiceRequest) -> Self::Future {
+        // get the x-api-key header from the incoming request
+        let x_api_key = request
             .headers()
             .get("x-api-key")
             .and_then(|value| value.to_str().ok());
 
-        // get the api key from the app state
-        let api_key = req
+        // get the valid api key from app state
+        let api_key = request
             .app_data::<Data<AppState>>()
             .map(|data| data.api_key.clone());
 
-        // check if the api key is valid, return an Unauthorized message if not valid
+        // check if the api key is valid
         if x_api_key != api_key.as_deref() {
-            return Box::pin(async move {
-                Err(actix_web::error::ErrorUnauthorized(
-                    "Unauthorized: Invalid API key",
-                ))
-            });
+            // return a 401 unauthorized response
+            let (request, _payload) = request.into_parts();
+            let response = HttpResponse::Unauthorized().finish().map_into_right_body();
+            return Box::pin(async move { Ok(ServiceResponse::new(request, response)) });  // error response is returned immediately, we don't need to 'await' it
         }
 
-        // the API key is valid if we get here, so we pass the request on
-        let fut = self.service.call(req);
-        Box::pin(async move {
-            let res = fut.await?;
-            Ok(res)
-        })
+        // return the request if the API key is valid
+        let response = self.service.call(request);
+        Box::pin(async move { response.await.map(ServiceResponse::map_into_left_body) })
     }
 ```
 
@@ -193,6 +193,10 @@ Here's what's happening:
 - we read in the valid API key from application state, it gets cloned to make the compiler happy...at least that's what I had to do, I'm sure someone more experience would do it in a better way
 - we compare the API keys, if they don't match the request is refused and an error message is returned
 - assuming the API key checks out, we pass the request through to it's appropriate endpoint.
+
+In the API key validation if block, we split the request into it a request and payload, by destructuring into a tupe. Then, we construct the "unauthorized" error response we want to give, mapping it into the right variant of our ServiceResponse type, which is an EitherBody type because of our trait definition. The right variant of EitherBody typically holds error responses.
+
+If the API key is valid, then we pass through the request, using the left variant of our ServiceResponse type, which represents the response from the middleware, which in this case is the unmodified request.
 
 Ok, so, we finally have some middleware. how do we use it?
 
@@ -207,7 +211,7 @@ async fn greet(name: web::Path<String>) -> impl Responder {
 #[actix_web::main] // or #[tokio::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
-        App::new().wrap(RandomStruct).service(greet)
+        App::new().wrap(ApiKey).service(greet)    // our middleware "wraps" the greet endpoint
     })
     .bind(("127.0.0.1", 8080))?
     .run()
@@ -215,13 +219,15 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-This is the hello world example from the Actix Web docs. I've modified to show where our middleware gets invoked as the app spins up. It's called by the .wrap() function the precedes the call to the greet endpoint handler. That's it! I haven't done it in the snip above, but you would need to bring your RandomStruct type into scope, assuming it lives in a separate module file. As a point of good practice, and given how long middleware might be, it's best to split it up into separate module files.
+This is the hello world example from the Actix Web docs. I've modified to show where our middleware gets invoked as the app spins up. It's called by the .wrap() function the precedes the call to the greet endpoint handler. That's it! I haven't done it in the snip above, but you would need to bring your ApiKey type into scope with a use statement, assuming it lives in a separate module file. As a point of good practice, and given how long middleware might be, it's best to split it up into separate module files.
 
 If you have multiple middleware pieces, you write each one separately and wrap it with a struct in the same fashion. Remember that middleware is executed in the opposite order to registration.
 
 ## Conclusion
 
-Made it! I hope you enjoyed this short journey through Actix Web middleware. This is not exhaustive, and I'm sure there are a million nuances I've missed. I hope I've captured for you the flow of what you need to write your own. Remember, the boiler plate above can be added to your project and it will just sit and be ready for expansion. Once it's done, it's done and you just need to add your logic.
+Made it! I hope you enjoyed this short journey through Actix Web middleware. This is not exhaustive, and I'm sure there are a million nuances I've missed. I hope I've captured for you the flow of what you need to write your own. Remember, the boiler plate above can be added to your project and it will just sit and be ready for expansion. Once it's done, it's done and you just need to add your logic to the call function within the Service trait implementation.
+
+My purpose here was to understand full blow middleware, so that's been the focus of this piece. I would be mistaken to not say that there is a simpler way to do middleware, if it's literally something dead simple. It's experimental right now, but will likely graduate sometime soon. [Simpler Actix Web Middleware](https://docs.rs/actix-web/4.4.0/actix_web/struct.App.html#method.wrap_fn)
 
 I invite you to dig deeper in the articles below, especially Luca's. He's developing the Pavex web framework and in doing that, having to figure out his own take a middleware system. It's a terrific read.
 
