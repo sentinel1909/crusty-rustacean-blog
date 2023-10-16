@@ -133,7 +133,7 @@ _Dependencies_
     - a struct which represents our future and it's associated value, it's the output of the ready function
 - we'll also pull in LocalBoxFuture from the futures_util crate
   - LocalBoxFuture is a "An owned dynamically typed Future for use in cases where you can’t statically type your result or need to add some indirection"
-  - it doesn't have the Send requirement, meaning it can't be transferred across thread boundaries
+    - it doesn't have the Send requirement, meaning it can't be transferred across thread boundaries
 
 _Structs_
 
@@ -194,7 +194,7 @@ Here's what's happening:
 - we compare the API keys, if they don't match the request is refused and an error message is returned
 - assuming the API key checks out, we pass the request through to it's appropriate endpoint.
 
-In the API key validation if block, we split the request into it a request and payload, by destructuring into a tupe. Then, we construct the "unauthorized" error response we want to give, mapping it into the right variant of our ServiceResponse type, which is an EitherBody type because of our trait definition. The right variant of EitherBody typically holds error responses.
+In the API key validation if block, we split the request into it a request and payload, by destructuring into a tuple. Then, we construct the "unauthorized" error response we want to give, mapping it into the right variant of our ServiceResponse type, which is an EitherBody type because of our trait definition. The right variant of EitherBody typically holds error responses.
 
 If the API key is valid, then we pass through the request, using the left variant of our ServiceResponse type, which represents the response from the middleware, which in this case is the unmodified request.
 
