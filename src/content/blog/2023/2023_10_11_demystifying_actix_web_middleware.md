@@ -227,7 +227,7 @@ If you have multiple middleware pieces, you write each one separately and wrap i
 
 Made it! I hope you enjoyed this short journey through Actix Web middleware. This is not exhaustive, and I'm sure there are a million nuances I've missed. I hope I've captured for you the flow of what you need to write your own. Remember, the boiler plate above can be added to your project and it will just sit and be ready for expansion. Once it's done, it's done and you just need to add your logic to the call function within the Service trait implementation.
 
-My purpose here was to understand full blow middleware, so that's been the focus of this piece. I would be mistaken to not say that there is a simpler way to do middleware, if it's literally something dead simple. It's experimental right now, but will likely graduate sometime soon. [Simpler Actix Web Middleware](https://docs.rs/actix-web/4.4.0/actix_web/struct.App.html#method.wrap_fn)
+My purpose here was to understand full blow middleware, so that's been the focus of this piece. I would be mistaken to not say that there is a simpler way to do middleware, if it's literally something dead simple. It's experimental right now, but will likely graduate sometime soon. [Simpler Actix Web Middleware](https://docs.rs/actix-web-lab/latest/actix_web_lab/middleware/fn.from_fn.html)
 
 I invite you to dig deeper in the articles below, especially Luca's. He's developing the Pavex web framework and in doing that, having to figure out his own take a middleware system. It's a terrific read.
 
