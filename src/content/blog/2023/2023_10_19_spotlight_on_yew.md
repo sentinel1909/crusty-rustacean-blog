@@ -1,5 +1,5 @@
 ---
-title: "Spotlight on Yew"
+title: "Newsletter Issue 4: Spotlight on Yew"
 publishedDate: "2023-10-19"
 description: "The October 2023 issue of the Crusty Rustacean Newsletter, sent to subscribers on October 12, 2023 "
 categories: ["newsletter"]
