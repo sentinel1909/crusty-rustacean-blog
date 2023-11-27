@@ -324,7 +324,7 @@ dependencies = [
 
 [[package]]
 name = "crusty-rustacean-blog"
-version = "2023.11.7"
+version = "2023.11.26"
 dependencies = [
  "axum",
  "shuttle-axum",

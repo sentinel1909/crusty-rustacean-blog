@@ -1,6 +1,6 @@
 [package]
 name = "crusty-rustacean-blog"
-version = "2023.11.7"
+version = "2023.11.26"
 edition = "2021"
 description = "Crusty Rustacean Development Blog"
 readme = "README.md"
@@ -8,7 +8,6 @@ authors = [ "Jeffery D. Mitchell", "<sentinel1909@jeff-mitchell.dev>" ]
 repository = "https://github.com/sentinel1909/crusty-rustacean-blog"
 license = "MIT"
 keywords = ["astro, axum, shuttle"]
-categories = ["static"]
 publish = false
 
 [dependencies]
