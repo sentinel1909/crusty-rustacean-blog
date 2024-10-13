@@ -2,16 +2,16 @@
 name = "crusty-rustacean-blog"
 version = "2023.12.12"
 edition = "2021"
-description = "Crusty Rustacean Development Blog"
+description = "Crusty Rustacean Blog"
 readme = "README.md"
 authors = [ "Jeffery D. Mitchell", "<sentinel1909@jeff-mitchell.dev>" ]
 repository = "https://github.com/sentinel1909/crusty-rustacean-blog"
 license = "MIT"
-keywords = ["astro, axum, shuttle"]
+keywords = ["astro, rocket, shuttle"]
 publish = false
 
 [dependencies]
-rocket = "0.5"
-shuttle-rocket = "0.35.0"
-shuttle-runtime = { version = "0.35.0" }
+rocket = "0.5.1"
+shuttle-rocket = "0.48.0"
+shuttle-runtime = { version = "0.48.0" }
 
